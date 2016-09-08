@@ -2,10 +2,10 @@ const Sequelize = require('sequelize');
 
 //Need to add a database that is mysql/postgres/sql compatible
 //here for the db to work
-var sequelize = new Sequelize('', '', '', {
-  host: '',
+var sequelize = new Sequelize('compose', 'admin', 'kimchiboyz', {
+  host: 'aws-us-east-1-portal.22.dblayer.com',
   dialect: 'postgres',
-  port: '10860',
+  port: '15215',
   //logging: false,
   options: {
     timezone: 'America/Los_Angeles',
