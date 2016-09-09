@@ -90,7 +90,7 @@ class Payment extends Component {
 
           <label htmlFor="card-number">Card Number</label>
           <div className="hosted-field" id="card-number"></div>
-          <div><img src=""/></div>
+          <div><img id="cards" src="../../cards.png"/></div>
 
           <label htmlFor="cvv">CVV</label>
           <div className="hosted-field" id="cvv"></div>

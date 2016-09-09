@@ -3,11 +3,17 @@
   border-radius: 10px;
   height: 45px;
   padding: 7px 0 7px 12px;
-  margin-bottom: 15px;
   width: 200px;
+}
+#cards {
+  display: inline;
+  width: 200px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 #cvv {
   width: 75px;
+  margin-bottom: 15px;
 }
 #expiration-date {
   width: 108px;
