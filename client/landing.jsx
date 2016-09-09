@@ -8,6 +8,8 @@ import CreateTrip from './src/components/createTrip.jsx';
 import Signup from './src/components/signUp.jsx';
 import Logout from './src/components/logout.jsx';
 import UserProfile from './src/components/userProfile.jsx';
+import AutoSearchBar from './src/components/autocompleteSearchBar.jsx';
+
 
 class Landing extends Component {
   constructor(props) {
@@ -36,12 +38,7 @@ class Landing extends Component {
           <div className="container">
             <h1> Where are you going? </h1>
               <form onSubmit={this.submitData}>
-              <input
-                className="form-control"
-                placeholder = "Enter a city or state"
-                value = {this.state.endLocation}
-                onChange = {this.handleChange.bind(this, 'endLocation')} />
-
+                <AutoSearchBar />
               </form>
           </div>
         </div>

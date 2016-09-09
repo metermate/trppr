@@ -9,6 +9,8 @@ import TripList from './src/components/tripList.jsx';
 import SearchBar from './src/components/searchBar.jsx';
 import NavBar from './src/components/navBar.jsx';
 import CreateTrip from './src/components/createTrip.jsx';
+// import AutoSearchBox from './src/components/autocompleteSearchBox.jsx';
+import AutoSearchBar from './src/components/autocompleteSearchBar.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +49,7 @@ class App extends Component {
       }
       that.setState({tripResults: filtered,
                     isLoading: false
-                  });
+                   });
     })
     .catch(function (error) {
       console.log(error);

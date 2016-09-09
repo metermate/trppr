@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/server.js",
+    "start": "webpack -w & nodemon server/server.js",
     "bundle": "node_modules/.bin/webpack -w",
     "postinstall": "node_modules/.bin/webpack -p"
   },
@@ -43,6 +43,8 @@
     "postal-abbreviations": "^2.0.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "react-geosuggest": "^1.25.0",
+    "react-google-places-suggest": "^1.0.1",
     "react-router": "^2.7.0",
     "request": "^2.74.0",
     "sequelize": "^3.24.1",

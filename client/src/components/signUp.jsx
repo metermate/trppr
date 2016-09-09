@@ -80,6 +80,7 @@ class Signup extends Component {
           <h1>Create Your Account</h1>
           <div>
             <input
+              type = 'text'
               value = {this.state.firstName}
               placeholder = 'Your First Name'
               className="form-control"
@@ -87,6 +88,7 @@ class Signup extends Component {
           </div>
           <div>
             <input
+              type = 'text'
               value = {this.state.lastName}
               placeholder = 'Your Last Name'
               className="form-control"

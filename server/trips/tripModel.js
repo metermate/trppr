@@ -42,7 +42,7 @@ const Trip = sequelize.define('trip', {
   },
   vehicleMake: Sequelize.STRING,
   vehicleModel: Sequelize.STRING,
-  vehicleYear: Sequelize.STRING,
+  vehicleYear: Sequelize.INTEGER,
   description: Sequelize.TEXT,
   driverId: Sequelize.INTEGER
 });

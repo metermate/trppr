@@ -25,9 +25,10 @@ class CreateTrip extends Component {
     this.submitTrip = this.submitTrip.bind(this);
   }
 
-  handleChange(name, e) {
+  handleChange(name, e) { // Changes have been made here
     let change = {};
     change[name] = e.target.value;
+    console.log("This is change: " + change);
     this.setState(change);
   }
 
@@ -67,10 +68,13 @@ class CreateTrip extends Component {
     });
   }
 
+    onSuggestSelect(suggestion){
+      console.log(suggestion);
+    }
   render() {
     return (
       <div className="container">
-        <NavBar />
+      <NavBar />
         <form className="form-group" onSubmit={this.submitTrip}>
           <h1>Create Your Trip</h1>
           <div className="col-md-6" id="CreateAndSearchTripsLeft">
@@ -112,10 +116,13 @@ class CreateTrip extends Component {
                 onChange = {this.handleChange.bind(this, 'vehicleModel')} />
 
                 <input
+                type = 'number'
+                min = {1900} // Sets minimum value
                 placeholder = "Vehicle Year"
                 className="form-control"
                 value = {this.state.vehicleYear}
-                onChange = {this.handleChange.bind(this, 'vehicleYear')} />
+                onChange = {this.handleChange.bind(this, 'vehicleYear')}
+                error={this.state.vehicleYear > 9999 ? 'Enter a number less than 10000' : ''}/>
             </div>
 
             <div className="col-md-6" id="CreateAndSearchTripsRight">
@@ -139,17 +146,21 @@ class CreateTrip extends Component {
 
               <input
                 type = 'number'
+                min = {0} // Sets minimum value
                 className="form-control"
                 placeholder = "# of Seats"
                 value = {this.state.numSeats}
-                onChange = {this.handleChange.bind(this, 'numSeats')} />
+                onChange = {this.handleChange.bind(this, 'numSeats')}
+                error={this.state.numSeats > 99 ? 'Enter a number less than 100' : ''}/>
 
               <input
                 type = 'number'
+                min = {0} // Sets minimum value
                 className="form-control"
                 placeholder = "Price per Seat"
                 value = {this.state.seatPrice}
-                onChange = {this.handleChange.bind(this, 'seatPrice')} />
+                onChange = {this.handleChange.bind(this, 'seatPrice')}
+                error={this.state.seatPrice > 999 ? 'Enter a number less than 1000' : ''} />
 
                 <input
                 placeholder = "Description"
