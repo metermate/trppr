@@ -58,6 +58,24 @@ class Payment extends Component {
         }
 
         submit.removeAttribute('disabled');
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          hostedFieldsInstance.tokenize(function(tokenizeErr, payload) {
+            if (tokenizeErr) {
+              return;
+            }
+
+            // Puts an automatically generated nonce, a string returned by the
+            // client SDK to represent a payment method, into the hidden
+            // 'payment-method-nonce' input field, and submits the form. On submit,
+            // a post request to the /checkout endpoint is made with the user's
+            // payment details.
+            document.querySelector('input[name="payment-method-nonce"]').value = payload.nonce;
+            form.submit();
+          });
+        }, false);
       });
     });
   }
