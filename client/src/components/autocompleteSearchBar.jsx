@@ -22,14 +22,10 @@ class AutoSearchBar extends Component {
   onSuggestSelect(suggestion){
     var address = suggestion.label.split(",")
     this.setState({ locArray: address });
-    console.log("locArray: " + this.state.locArray)
+    // console.log("locArray: " + this.state.locArray)
     var link = [this.state.locArray[1], this.state.locArray[2]];
-    console.log("This is link: " + link)
+    // console.log("This is link: " + link)
     this.props.submitData(link)
-  }
-
-  handleSubmit() {
-    // browserHistory.push(link)
   }
 
   render() {
@@ -42,10 +38,8 @@ class AutoSearchBar extends Component {
             type="text"
             placeholder="Enter a location"
             onSuggestSelect={this.onSuggestSelect}
-            onChange={ this.handleSearchChange }
-            // onFocus={this.onFocus}
-            // onBlur={this.onBlur}
-            onSubmit={this.handleSubmit} />
+            onChange={this.handleSearchChange}
+        />
       </div>
     )
   }

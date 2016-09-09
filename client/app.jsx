@@ -19,7 +19,8 @@ class App extends Component {
                    tripResults: [],
                    Authorization: '',
                    landingLocation: '',
-                   isLoading: ''
+                   isLoading: '',
+                   locArray: this.props.params.location.split(",")
                  };
     this.infoStore = this.infoStore.bind(this);
   }
@@ -74,9 +75,11 @@ class App extends Component {
 
 componentWillMount() {
   console.log("Props.params.location: " + this.props.params.location)
+  var tempArr = this.props.params.location.split(",");
+  console.log("This is tempArr: " + tempArr[0])
+  this.setState({locArray: tempArr});
     if(this.props.params.location) {
-      // var locArray = this.props.params.location.split(" ");
-      // console.log("This is locArray in app.jsx: ", locArray);
+      console.log("This is locArray state in app.jsx: " + this.state.locArray);
       this.state.landingLocation = this.props.params.location;
 
       this.getTrips({endLocation: this.state.landingLocation})
@@ -104,7 +107,7 @@ componentWillMount() {
           <NavBar />
           <div className="container">
             <h1>Detailed Search</h1>
-            <SearchBar infoStore={this.infoStore} queryStr={this.props.params.location}/>
+            <SearchBar infoStore={this.infoStore} queryStr={this.state.locArray[0]}/>
           </div>
           <TripList reserveSeat={this.reserveSeat} trips={this.state.tripResults}/>
         </div>
