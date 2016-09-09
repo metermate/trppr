@@ -142,6 +142,8 @@ class UserProfile extends Component {
         <h1>Created trips</h1>
         <NavBar />
         <UserTrips trips={this.state.createdTrips}/>
+        <h1>Booked trips</h1>
+        <UserTrips trips={this.state.createdTrips}/>
       </div>
     )
   }
