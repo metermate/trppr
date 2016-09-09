@@ -8,6 +8,7 @@ import CreateTrip from './src/components/createTrip.jsx';
 import Signup from './src/components/signUp.jsx';
 import Logout from './src/components/logout.jsx';
 import UserProfile from './src/components/userProfile.jsx';
+import Payment from './src/components/payment.jsx';
 
 class Landing extends Component {
   constructor(props) {
@@ -40,8 +41,8 @@ class Landing extends Component {
                 className="form-control"
                 placeholder = "Enter a city or state"
                 value = {this.state.endLocation}
-                onChange = {this.handleChange.bind(this, 'endLocation')} />
-
+                onChange = {this.handleChange.bind(this, 'endLocation')}
+              />
               </form>
           </div>
         </div>
@@ -58,5 +59,6 @@ render((
     <Route path='signUp' component={Signup} />
     <Route path='logOut' component={Logout} />
     <Route path='userProfile' component={UserProfile} />
+    <Route path='payment' component={Payment} />
   </Router>
 ), document.getElementById('app'));
