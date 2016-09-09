@@ -1,3 +1,18 @@
+.hosted-field {
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 45px;
+  padding: 7px 0 7px 12px;
+  margin-bottom: 15px;
+  width: 200px;
+}
+#cvv {
+  width: 75px;
+}
+#expiration-date {
+  width: 108px;
+  margin-bottom: 40px;
+}
 #landingBody {
   position: absolute; top: 0; left: 0
   overflow-x: hidden;
