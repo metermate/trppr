@@ -26,7 +26,8 @@ module.exports = (app, express) => {
         '/updateUser',
         '/getDriverHistory',
         '/getPassengerHistory',
-        '/userProfile'
+        '/userProfile',
+        '/payment'
       ]
     }
   ));
