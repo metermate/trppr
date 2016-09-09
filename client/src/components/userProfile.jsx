@@ -5,6 +5,7 @@ import {browserHistory} from 'react-router';
 
 import NavBar from './navBar.jsx';
 import UserTrips from './userTrips.jsx';
+import BookedTrips from './bookedTrips.jsx';
 
 class UserProfile extends Component {
   constructor(props) {
@@ -33,9 +34,10 @@ class UserProfile extends Component {
     })
 
     axios.post('/getPassengerHistory',
-      {driverId: localStorage.getItem('id')}
+      {userId: localStorage.getItem('id')}
     )
     .then(function(response) {
+      that.setState({joinedTrips: response.data})
       console.log('inside userProfile.jsx /getPassengerHistory' , response);
     })
     .catch(function(error) {
@@ -142,6 +144,8 @@ class UserProfile extends Component {
         <h1>Created trips</h1>
         <NavBar />
         <UserTrips trips={this.state.createdTrips}/>
+        <h1>Booked trips</h1>
+        <BookedTrips trips={this.state.joinedTrips}/>
       </div>
     )
   }

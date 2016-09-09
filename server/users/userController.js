@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../users/userModel');
 const Trip = require('../trips/tripModel');
 const password = require('../config/passwordHelper');
-
+const sequelize = require('../config/database');
 module.exports = {
 
   createUser: function(req, res) {
@@ -146,37 +146,13 @@ module.exports = {
   getPassengerHistory: function(req, res){
     var tripsList = [];
 
-    Trip.findAll({
-      attributes: [
-        'id',
-        'tripDate',
-        'startSt',
-        'startCity',
-        'startState',
-        'endSt',
-        'endCity',
-        'endState',
-        'numSeats',
-        'seatPrice',
-        'vehicleMake',
-        'vehicleModel',
-        'vehicleYear',
-        'description'
-      ],
-      where: {
-        id: {
-          include: [Trip, User],
-
-        },
-
-      }
-    })
+    sequelize.query("SELECT \"trips\".\"driverName\", \"trips\".\"tripDate\", \"trips\".\"startCity\", \"trips\".\"startState\", \"trips\".\"endCity\", \"trips\".\"endState\", \"trips\".\"seatPrice\", \"trips\".\"description\" FROM \"trips\" INNER JOIN \"tripPassengers\" on (\"tripPassengers\".\"tripId\" = \"trips\".\"id\") INNER JOIN \"users\" on (\"tripPassengers\".\"userId\" = \"users\".\"id\") WHERE \"users\".\"id\" = " +req.body.userId, { type: sequelize.QueryTypes.SELECT})
     .then(function(trips){
       trips.forEach( (trip) => {
-        tripsList.push(trip.dataValues);
+        tripsList.push(trip);
       });
+      console.log('get trips list inside passenger history: ', tripsList);
       console.log('\033[34m <TRPPR> Sending data: \033[0m');
-      console.log(tripsList);
       res.json(tripsList);
     })
     .catch(function(err) {
