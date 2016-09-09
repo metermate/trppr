@@ -20,6 +20,7 @@ class SearchBar extends Component {
   }
 
   submitData() {
+    console.log("In searchBar, this.props.params: " + this.props.params)
     this.props.infoStore(this.state);
     this.setState({ endLocation: '',
                    startLocation: '',

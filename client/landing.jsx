@@ -24,9 +24,9 @@ class Landing extends Component {
     this.setState(change);
   }
 
-  submitData(e) {
-    e.preventDefault();
-    const link = '/app/' + this.state.endLocation
+  submitData(location) {
+    // e.preventDefault();
+    const link = '/app/' + location
     browserHistory.push(link);
   }
 
@@ -38,7 +38,7 @@ class Landing extends Component {
           <div className="container">
             <h1> Where are you going? </h1>
               <form onSubmit={this.submitData}>
-                <AutoSearchBar />
+                <AutoSearchBar submitData = {this.submitData} />
               </form>
           </div>
         </div>

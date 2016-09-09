@@ -73,8 +73,12 @@ class App extends Component {
   }
 
 componentWillMount() {
+  console.log("Props.params.location: " + this.props.params.location)
     if(this.props.params.location) {
+      // var locArray = this.props.params.location.split(" ");
+      // console.log("This is locArray in app.jsx: ", locArray);
       this.state.landingLocation = this.props.params.location;
+
       this.getTrips({endLocation: this.state.landingLocation})
       this.props.params.location = undefined;
       this.state.landingLocation = ''
@@ -100,7 +104,7 @@ componentWillMount() {
           <NavBar />
           <div className="container">
             <h1>Detailed Search</h1>
-            <SearchBar infoStore={this.infoStore}/>
+            <SearchBar infoStore={this.infoStore} queryStr={this.props.params.location}/>
           </div>
           <TripList reserveSeat={this.reserveSeat} trips={this.state.tripResults}/>
         </div>

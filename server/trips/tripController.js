@@ -91,6 +91,7 @@ module.exports = {
     //   startLocation = postal.toAbbreviation(startLocation);
     // }
     var endLocation = req.query.endLocation;
+    console.log("In tripConrtroller, endLocation: " + req.query.endLocation)
     // if(req.query.endLocation.length > 2){
     //   endLocation = postal.toAbbreviation(endLocation);
     // }
