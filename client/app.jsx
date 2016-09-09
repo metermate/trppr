@@ -9,7 +9,6 @@ import TripList from './src/components/tripList.jsx';
 import SearchBar from './src/components/searchBar.jsx';
 import NavBar from './src/components/navBar.jsx';
 import CreateTrip from './src/components/createTrip.jsx';
-// import AutoSearchBox from './src/components/autocompleteSearchBox.jsx';
 import AutoSearchBar from './src/components/autocompleteSearchBar.jsx';
 
 class App extends Component {
@@ -19,8 +18,7 @@ class App extends Component {
                    tripResults: [],
                    Authorization: '',
                    landingLocation: '',
-                   isLoading: '',
-                   locArray: this.props.params.location.split(",")
+                   isLoading: ''
                  };
     this.infoStore = this.infoStore.bind(this);
   }
@@ -74,18 +72,12 @@ class App extends Component {
   }
 
 componentWillMount() {
-  console.log("Props.params.location: " + this.props.params.location)
-  var tempArr = this.props.params.location.split(",");
-  console.log("This is tempArr: " + tempArr[0])
-  this.setState({locArray: tempArr});
-    if(this.props.params.location) {
-      console.log("This is locArray state in app.jsx: " + this.state.locArray);
-      this.state.landingLocation = this.props.params.location;
-
-      this.getTrips({endLocation: this.state.landingLocation})
-      this.props.params.location = undefined;
-      this.state.landingLocation = ''
-    }
+  if(this.props.params.location) {
+    this.state.landingLocation = this.props.params.location;
+    this.getTrips({endLocation: this.state.landingLocation})
+    this.props.params.location = undefined;
+    this.state.landingLocation = ''
+  }
 }
 
   render () {
@@ -107,7 +99,7 @@ componentWillMount() {
           <NavBar />
           <div className="container">
             <h1>Detailed Search</h1>
-            <SearchBar infoStore={this.infoStore} queryStr={this.state.locArray[0]}/>
+            <SearchBar infoStore={this.infoStore}/>
           </div>
           <TripList reserveSeat={this.reserveSeat} trips={this.state.tripResults}/>
         </div>
