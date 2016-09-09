@@ -9,6 +9,7 @@ import Signup from './src/components/signUp.jsx';
 import Logout from './src/components/logout.jsx';
 import UserProfile from './src/components/userProfile.jsx';
 import Payment from './src/components/payment.jsx';
+import AutoSearchBar from './src/components/autocompleteSearchBar.jsx';
 
 class Landing extends Component {
   constructor(props) {
@@ -23,9 +24,9 @@ class Landing extends Component {
     this.setState(change);
   }
 
-  submitData(e) {
-    e.preventDefault();
-    const link = '/app/' + this.state.endLocation
+  submitData(location) {
+    // e.preventDefault();
+    const link = '/app/' + location
     browserHistory.push(link);
   }
 
@@ -37,12 +38,7 @@ class Landing extends Component {
           <div className="container">
             <h1> Where are you going? </h1>
               <form onSubmit={this.submitData}>
-              <input
-                className="form-control"
-                placeholder = "Enter a city or state"
-                value = {this.state.endLocation}
-                onChange = {this.handleChange.bind(this, 'endLocation')}
-              />
+                <AutoSearchBar submitData = {this.submitData} />
               </form>
           </div>
         </div>
