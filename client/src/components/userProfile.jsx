@@ -33,7 +33,7 @@ class UserProfile extends Component {
     })
 
     axios.post('/getPassengerHistory',
-      {driverId: localStorage.getItem('id')}
+      {userId: localStorage.getItem('id')}
     )
     .then(function(response) {
       console.log('inside userProfile.jsx /getPassengerHistory' , response);
