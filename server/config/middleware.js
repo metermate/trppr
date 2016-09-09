@@ -27,7 +27,8 @@ module.exports = (app, express) => {
         '/getDriverHistory',
         '/getPassengerHistory',
         '/userProfile',
-        '/payment'
+        '/payment',
+        '/checkout'
       ]
     }
   ));

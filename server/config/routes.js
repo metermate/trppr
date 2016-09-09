@@ -30,6 +30,10 @@ module.exports = (app, express) => {
   app.post('/getDriverHistory', userController.getDriverHistory);
   app.post('/getPassengerHistory', userController.getPassengerHistory);
 
+  // Once the user submits payment details, a payment method "nonce" representing
+  // customer payment authorization is generated and posted to this endpoint.
+  app.post('/checkout', userController.checkout);
+
   /*
   *  Trip API Requests
   */

@@ -3,6 +3,15 @@ const User = require('../users/userModel');
 const Trip = require('../trips/tripModel');
 const password = require('../config/passwordHelper');
 const sequelize = require('../config/database');
+const braintree = require('braintree');
+
+const gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: 'gmfj7ftqw5bx2t4b',
+  publicKey: 'fdpskwc4gjgjpdmv',
+  privateKey: 'fccd7c5fb269428dbb051dcbd0aaa9dc'
+});
+
 module.exports = {
 
   createUser: function(req, res) {
@@ -159,5 +168,27 @@ module.exports = {
       console.log('Error:', err.message);
       res.send(err.message);
     });
+  },
+
+  checkout: function(req, res) {
+    console.log('req.body in checkout: ', req.body);
+    // var nonceFromTheClient = req.body.payment_method_nonce;
+    var nonceFromTheClient = 'fake-valid-nonce';
+
+    gateway.transaction.sale({
+      amount: '123.00',
+      paymentMethodNonce: nonceFromTheClient,
+      options: {
+        submitForSettlement: true
+      }
+    }, function (err, result) {
+      if(err) {
+        console.error('Error creating transaction: ', err);
+      } else {
+        console.log('Transaction has been processed successfully');
+      }
+    });
+
+    res.send('Your payment has been processed successfully.');
   }
 }
