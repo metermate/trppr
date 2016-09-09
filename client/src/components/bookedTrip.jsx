@@ -2,13 +2,13 @@ import React from 'react';
 import {render} from 'react-dom';
 import moment from 'moment';
 
-const UserTrip = (props) => {
+const BookedTrip = (props) => {
     return (
         <div className="container" id="tripEntry">
             <div className="row" id="tripRow">
                 <div className="col-sm-4 other">
-                    <div id="tripTag">Seats Available:</div>
-                    <p>{props.trip.numSeats}</p>
+                    <div id="tripTag">Driver Name</div>
+                    <p>{props.trip.driverName}</p>
                 </div>
 
                 <div className="col-sm-4 other">
@@ -16,10 +16,10 @@ const UserTrip = (props) => {
                     <p>$ {props.trip.seatPrice}</p>
                 </div>
 
-                <div className="col-sm-4 other">
+                {/* <div className="col-sm-4 other">
                     <div id="tripTag">Vehicle:</div>
                     <p>{props.trip.vehicleYear} {props.trip.vehicleMake} {props.trip.vehicleModel}</p>
-                </div>
+                </div> */}
             </div>
 
             <div className="row" id="tripRow">
@@ -30,13 +30,12 @@ const UserTrip = (props) => {
 
                 <div className="col-sm-4 other">
                     <div id="tripTag">Pick-up Address:</div>
-                    <p>{props.trip.startSt}, &nbsp; {props.trip.startCity}, &nbsp; {props.trip.startState}</p>
+                    <p>{props.trip.startCity} {props.trip.startState}</p>
                 </div>
 
                 <div className="col-sm-4 other">
                   <div id="tripTag">Drop-off Address:</div>
-                  <p>
-                      {props.trip.endSt}, &nbsp; {props.trip.endCity}, &nbsp; {props.trip.endState}</p>
+                  <p>{props.trip.endCity} {props.trip.endState}</p>
                 </div>
             </div>
 
@@ -50,4 +49,4 @@ const UserTrip = (props) => {
       );
 }
 
-export default UserTrip;
+export default BookedTrip;

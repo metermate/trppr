@@ -7,7 +7,7 @@ import BookedTrip from './bookedTrip.jsx';
        <div className="container">
          <div className="tripContainer">
            {props.trips.map((trip, index) => {
-            return <BookedTrips key={index} trip={trip} />
+            return <BookedTrip key={index} trip={trip} />
            })}
          </div>
        </div>
