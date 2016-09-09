@@ -64,7 +64,7 @@ class Login extends Component {
                 type = 'password'
                 className = 'form-control'
                 id = 'emailAndPassword'
-                placeholder = 'Password'
+                required placeholder = 'Password' // Must input a password
                 onChange = {this.handleChange.bind(this, 'password')}/>
 
               <input type = 'submit' value = 'Login' className='btn btn-default'/>

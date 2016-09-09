@@ -9,8 +9,9 @@ class SearchBar extends Component {
                    numSeats: '',
                    price: '',
                    startDate: '',
-                   endDate: ''
+                   endDate: '',
                  };
+
   }
 
   handleChange(name, e) {
@@ -20,8 +21,10 @@ class SearchBar extends Component {
   }
 
   submitData() {
+    console.log("In searchBar.submitData, this.props.locArray: " + this.props.queryStr)
     this.props.infoStore(this.state);
-    this.setState({ endLocation: '',
+    this.setState({
+                   endLocation: '',
                    startLocation: '',
                    numSeats: '',
                    seatPrice: '',
